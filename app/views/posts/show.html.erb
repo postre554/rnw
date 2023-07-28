@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="rounded border border-2 bg-light rounded col-8"><%= render @post %></div>
+
+<div class="rounded border border-1 bg-light rounded col-8 mt-3">
+
+<h4 class="ms-3 fs-5 mt-2">Comentarios:</h4>
+<ul >
+
+<% @comments.each do |comment| %>
+  <div style="display: flex; align-items: center;">
+    <%= content_tag :span, comment.contenido %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= button_to "Eliminar", comment, method: :delete, class: "ms-4 btn btn-danger btn-sm" %>
+      <% end %>
+    <% end %>
+    <p class="fs-6 ms-4 pt-3 text-secondary">Creado por: <%= comment.user.email %></p>
+    </div>
+<% end %>
+
+
+</ul>
+
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "Crear un comentario", new_post_comment_path(@post), class: "btn btn-primary " %>
+  <% if current_user.email == @post.user.email || current_user.admin? %>
+  <%= link_to "Editar Noticia", edit_post_path(@post) %>     
+  <%= button_to "Eliminar Noticia", @post, method: :delete, class: "btn btn-secondary btn-sm my-3" %>
+  <% end %>
+
+
+</div>
+<% end %>
+
+</div>
+
+<%= link_to "Volver", posts_path,  class: "btn btn-info btn-sm my-2" %>
+
+<!--# comentnario-->

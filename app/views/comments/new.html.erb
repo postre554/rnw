@@ -1,0 +1,10 @@
+<h1>New Comment</h1>
+
+<%= render "form", comment: @comment %>
+
+<br>
+
+<div>
+  <%= link_to "Volver", post_path(@comment.post),  class: "btn btn-secondary btn-sm my-3" %>
+</div>
+

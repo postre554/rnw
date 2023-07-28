@@ -1,0 +1,27 @@
+<div id="<%= dom_id post %>" class="class="rounded border border-1 bg-light rounded col-8 mt-3"">
+
+  <p>
+    <strong class="text-secondary">Titulo:</strong>
+    <span class="fs-4 capitalizar-texto"><%= post.title %></span>
+  </p>
+
+  <p>
+    <strong class="text-secondary">Imagen:</strong>
+    <%= post.image %>
+  </p>
+
+
+
+  <p>
+    <strong class="text-secondary">Contenido:</strong>
+    <%= post.content %>
+  </p>
+
+  <p>
+    <strong class="text-secondary">Creado por:</strong>
+    <%= post.user.email %>
+  </p>
+
+
+
+</div>

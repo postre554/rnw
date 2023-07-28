@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand letra_especial fs-2" href="#"><b class="text-secondary fs-1">T</b>he <b class="text-secondary fs-1">R</b>eal <b class="text-secondary fs-1">N</b>ews</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if user_signed_in? %>
+          <i class="fa-solid fa-user-pen fs-4 mx-2"></i> <%= current_user.email %>
+          <% else %>
+            Registrate o conectate
+          <% end %>
+          </a>
+         
+          <ul class="dropdown-menu">
+          <% if user_signed_in? %>
+            <li><%= button_to 'Cerrar sesión', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+          <% else %>
+          <li><%= link_to 'Iniciar sesión', new_user_session_path, class: 'dropdown-item'%></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= link_to 'Registro', new_user_registration_path, class: 'dropdown-item'%></li>
+          <% end %>
+
+          </ul>
+        </li>
+
+        
+      </ul>
+    </div>
+  </div>
+</nav>
